@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Montserrat;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3, h4, h5, h6{
+    font-family: Roboto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Navbar Component Styles */
+
+
+.navbar{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    z-index: 1000;
+    padding: 1.2em 2.5em;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a{
+    text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.website-img{
+    width: 300px;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.website-img + div{
+    align-self: center;
+}
+
+.nav-list{
+    list-style-type: none;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-list > li{
+    display: inline;
+}
+
+.nav-list > li > a{
+    font-size: 1.2rem;
+    color: #222222;
+    transition: color .2s ease-in;
+}
+
+.nav-list > li > a:hover{
+    color: #8180e0;
+}
+
+/* Main Component Styles */
+
+main{
+    padding: 2em;
+    margin-top: 250px;
+}
+
+.main-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.header-div{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.header-div > h1{
+    font-size: 3rem;
+    line-height: 1.5em;
+    opacity: .9;
+
+}
+
+.header-div > p{
+    margin-top: 40px;
+    line-height: 1.8em;
+    opacity: .6;
+    font-size: 1.5rem;
+}
+
+.header-div > button{
+    background-color: #8180e0;
+    color: white;
+    padding: 1.2em;
+    margin-top: 50px;
+    width: 200px;
+    transition: background-color .2s ease-in;
+
+}
+
+.header-div > button:hover{
+    background-color: black;
+}
+
+.header-img > img{
+    width: 500px;
+    height: auto;
 }
