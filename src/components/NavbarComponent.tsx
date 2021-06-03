@@ -6,15 +6,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 
 function Navbar(){
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    window.addEventListener("scroll", ()=>{
+        let nav = document.querySelector("nav")!;
+        if (window.scrollY === 0){
+            nav.style.backgroundColor = "";
+            nav.style.boxShadow = "";
+        }else{
+            if (!nav.style.backgroundColor){
+                console.log(12)
+                nav.style.backgroundColor = "white";
+                nav.style.boxShadow = "1px 1px 5px 1px #cecece";
+            }
+        }
+        
+    })
 
     return(
         <nav className="navbar">
@@ -25,18 +30,7 @@ function Navbar(){
                 <ul className="nav-list">
                     {["Home", "Services", "Contact"].map((link, index)=>{
                         return(<li key={index}>
-                            <a href="#" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>{link}</a>
-                            <Menu
-                                id="simple-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleClose}>My account</MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                            </Menu>
+                            <a href="#">{link}</a>
                         </li>
                         )
                     })}
