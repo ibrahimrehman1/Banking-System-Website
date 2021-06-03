@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderImage from "../assets/header-image.png";
+import HeaderImage2 from "../assets/header-image-2.png";
 import Button from '@material-ui/core/Button';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 
@@ -7,6 +8,9 @@ function MainComponent(){
     const [hoverStatus1, setHoverStatus1] = React.useState<Boolean>(false);
     const [hoverStatus2, setHoverStatus2] = React.useState<Boolean>(false);
     const [hoverStatus3, setHoverStatus3] = React.useState<Boolean>(false);
+    const [hoverStatus4, setHoverStatus4] = React.useState<Boolean>(false);
+    const [hoverStatus5, setHoverStatus5] = React.useState<Boolean>(false);
+    const [hoverStatus6, setHoverStatus6] = React.useState<Boolean>(false);
     return(
         <main>
             <header className="main-header">
@@ -52,6 +56,42 @@ function MainComponent(){
                         <Button variant="contained">
                             View More
                         </Button>
+                    </div>
+                </section>
+            </article>
+            <article className="main-header" style={{marginTop: "100px"}}>
+                <div className="header-img">
+                    <img src={HeaderImage2} alt="A Female Accountant" />
+                </div>
+                <div className="header-div">
+                    <h2>Our manager will contact you to clear the details.</h2>
+                    <p>We are here to help you when you need your financial support, then we are help you.</p>
+                    <p>We are here to help you when you need your financial support, then we are help you.</p>
+                    <Button variant="contained">
+                        Call Us Now
+                    </Button>
+                </div>
+            </article>
+            <article className="article-3">
+                <div>
+                    <h2>Fast and very easy application process here</h2>
+                    <p>We are here to help you when you need your financial support, then we are help you.</p>
+                </div>
+                <section>
+                    <div onMouseOver={()=>setHoverStatus4(true)} onMouseOut={()=>setHoverStatus4(false)}>
+                        <h3 style={{color: hoverStatus4 ? "white" : "#8180e0"}}>01</h3>
+                        <h4>Apply Bank Loan</h4>
+                        <p>We are provide best services and finaancial solution for you.</p>
+                    </div>
+                    <div onMouseOver={()=>setHoverStatus5(true)} onMouseOut={()=>setHoverStatus5(false)}>
+                        <h3 style={{color: hoverStatus5 ? "white" : "#8180e0"}}>02</h3>
+                        <h4>Approved Bank Loan</h4>
+                        <p>We are provide best services and finaancial solution for you.</p>
+                    </div>
+                    <div onMouseOver={()=>setHoverStatus6(true)} onMouseOut={()=>setHoverStatus6(false)}>
+                        <h3 style={{color: hoverStatus6 ? "white" : "#8180e0"}}>03</h3>
+                        <h4>Review Your Loan</h4>
+                        <p>We are provide best services and finaancial solution for you.</p>
                     </div>
                 </section>
             </article>

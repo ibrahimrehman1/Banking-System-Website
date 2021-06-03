@@ -210,3 +210,70 @@ main{
 .article-1-section3-div > button:hover{
     background-color: black;
 }
+
+.header-div > h2{
+    font-size: 2.5rem;
+    opacity: .8;
+}
+
+.article-3{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-3 > div{
+    width: 500px;
+    text-align: center;
+}
+
+.article-3 > div > h2{
+    font-size: 2.6rem;
+    opacity: .8;
+}
+
+.article-3 > div > p{
+    font-size: 1rem;
+    opacity: .6;
+    line-height: 1.5em;
+    margin-top: 30px;
+}
+
+.article-3 > section{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.article-3 > section > div{
+    width: 280px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px;
+    padding: 2em;
+    justify-content: space-evenly;
+    box-shadow: 1px 1px 10px 1px rgb(219, 219, 219);
+    transition: all .3s ease-in-out;
+
+}
+
+.article-3 > section > div:hover{
+    color: white;
+    background-color: #8180e0;
+}
+
+.article-3 > section > div > h3{
+    font-size: 3rem;
+}
+
+.article-3 > section > div > h4{
+    font-size: 1.3rem;
+    opacity: .8;
+}
+
+.article-3 > section > div > p{
+    line-height: 1.5em;
+}
