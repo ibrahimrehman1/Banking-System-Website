@@ -1,11 +1,16 @@
 import React from "react";
 import WebsiteLogo from "./../assets/website-logo.png";
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import {NavLink} from "react-router-dom";
 
+interface NavProps{
+    links: {
+        link: string,
+        path: string
+    }[];
 
-function Navbar(){
+}
+
+const Navbar:React.FC<NavProps> = ({links}) => {
     window.addEventListener("scroll", ()=>{
         let nav = document.querySelector("nav")!;
         if (window.scrollY === 0){
@@ -21,6 +26,8 @@ function Navbar(){
         
     })
 
+
+    
     return(
         <nav className="navbar">
             <div className="website-img">
@@ -28,9 +35,9 @@ function Navbar(){
             </div>
             <div>
                 <ul className="nav-list">
-                    {["Home", "Services", "Contact"].map((link, index)=>{
+                    {links.map(({link, path}, index)=>{
                         return(<li key={index}>
-                            <a href="#">{link}</a>
+                            <NavLink to={path} className={link}>{link}</NavLink>
                         </li>
                         )
                     })}

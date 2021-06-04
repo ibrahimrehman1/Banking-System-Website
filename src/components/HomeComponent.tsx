@@ -1,16 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import HeaderImage from "../assets/header-image.png";
 import HeaderImage2 from "../assets/header-image-2.png";
 import Button from '@material-ui/core/Button';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 
-function MainComponent(){
-    const [hoverStatus1, setHoverStatus1] = React.useState<Boolean>(false);
-    const [hoverStatus2, setHoverStatus2] = React.useState<Boolean>(false);
-    const [hoverStatus3, setHoverStatus3] = React.useState<Boolean>(false);
-    const [hoverStatus4, setHoverStatus4] = React.useState<Boolean>(false);
-    const [hoverStatus5, setHoverStatus5] = React.useState<Boolean>(false);
-    const [hoverStatus6, setHoverStatus6] = React.useState<Boolean>(false);
+function HomeComponent(){
+    const [hoverStatus1, setHoverStatus1] = useState<Boolean>(false);
+    const [hoverStatus2, setHoverStatus2] = useState<Boolean>(false);
+    const [hoverStatus3, setHoverStatus3] = useState<Boolean>(false);
+    const [hoverStatus4, setHoverStatus4] = useState<Boolean>(false);
+    const [hoverStatus5, setHoverStatus5] = useState<Boolean>(false);
+    const [hoverStatus6, setHoverStatus6] = useState<Boolean>(false);
+
+    useEffect(()=>{
+        document.title = "Homepage"
+        document.querySelector(".Home")?.classList.add("active-link");
+        document.querySelector(".View all Customers")?.classList.remove("active-link");
+        document.querySelector(".Contact")?.classList.remove("active-link");
+    }, [])
+
     return(
         <main>
             <header className="main-header">
@@ -18,7 +26,9 @@ function MainComponent(){
                     <h1>The right <span style={{color: "#8180e0", fontFamily: "Roboto"}}>decision</span> at the right time.</h1>
                     <p>We are here to help you when you need your financial support, then we are help you.</p>
                     <Button variant="contained">
-                        Contact Us
+                        <span>
+                            Contact Us
+                        </span>
                     </Button>
                 </div>
                 <div className="header-img">
@@ -99,4 +109,4 @@ function MainComponent(){
     )
 }
 
-export {MainComponent};
+export {HomeComponent};

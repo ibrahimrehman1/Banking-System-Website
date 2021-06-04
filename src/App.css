@@ -43,10 +43,14 @@ a{
 
 .nav-list{
     list-style-type: none;
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.active-link{
+    color: #8180e0 !important;
 }
 
 .nav-list > li{
