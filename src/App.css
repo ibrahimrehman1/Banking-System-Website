@@ -281,3 +281,21 @@ main{
 .article-3 > section > div > p{
     line-height: 1.5em;
 }
+
+.MuiTableCell-head{
+    font-weight: bold !important;
+}
+
+.MuiTableCell-head{
+    letter-spacing: 0 !important;
+}
+
+
+.tablebody-row{
+    transition: background-color .3s ease-in-out;
+}
+
+.tablebody-row:hover{
+    background-color: rgb(207, 207, 207);
+    cursor: pointer;
+}

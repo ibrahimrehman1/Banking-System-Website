@@ -7,15 +7,20 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
+  tableBody: {
+    opacity: .6
+  }
 });
 
 
-interface customersProps{
+export interface customersProps{
   accountType: string,
   city: string,
   currentBalance: number,
@@ -26,26 +31,33 @@ interface customersProps{
   _id: string
 }
 
+export interface stateProps{
+  customer: {
+    payload: customersProps[]
+  }
+}
+
+
 const CustomersComponent: React.FC = () => {
     const classes = useStyles();
     const [customers, setCustomers] = useState<customersProps[]>([]);
 
+    const history = useHistory();
 
     useEffect(()=>{
         document.title = "View All Customers"
         document.querySelector(".Home")?.classList.remove("active-link");
         document.querySelector(".View")?.classList.add("active-link");
         document.querySelector(".Contact")?.classList.remove("active-link");
-        async function fetchCustomers(){
-          let val = await fetch("http://localhost:5000/customers");
-          let data = await val.json();
-          setCustomers(data.customers)
-        }
-
-        fetchCustomers()
     }, [])
 
+    let newCustomers = useSelector((state: stateProps)=>{
+      return state.customer.payload
+    })
 
+    if (customers !== newCustomers){
+      setCustomers(newCustomers);
+    }
     return (
         <div style={{padding: "2em", marginTop: "150px"}}>
           
@@ -53,27 +65,27 @@ const CustomersComponent: React.FC = () => {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell>Customer Name</TableCell>
-                    <TableCell align="right">Email</TableCell>
-                    <TableCell align="right">Account Type</TableCell>
-                    <TableCell align="right">Mobile No</TableCell>
-                    <TableCell align="right">City</TableCell>
-                    <TableCell align="right">Current Balance</TableCell>
-                    <TableCell align="right">Last Transaction</TableCell>
+                    <TableCell align="center">Customer Name</TableCell>
+                    <TableCell align="center">Email</TableCell>
+                    <TableCell>Account Type</TableCell>
+                    <TableCell align="center">Mobile No</TableCell>
+                    <TableCell align="center">City</TableCell>
+                    <TableCell align="center">Current Balance</TableCell>
+                    <TableCell align="center">Last Transaction</TableCell>
                 </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className={classes.tableBody}>
                 {customers.map((customer, index) => (
-                    <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                        {customer.name}
-                    </TableCell>
-                    <TableCell align="right">{customer.email}</TableCell>
-                    <TableCell align="right">{customer.accountType}</TableCell>
-                    <TableCell align="right">{customer.mobileNo}</TableCell>
-                    <TableCell align="right">{customer.city}</TableCell>
-                    <TableCell align="right">{customer.currentBalance}</TableCell>
-                    <TableCell align="right">{customer.lastTransaction}</TableCell>
+                    <TableRow key={index} onClick={()=>history.push(`/customerdetail/${index}`)} className="tablebody-row">
+                      <TableCell component="th" scope="row" align="center">
+                          {customer.name}
+                      </TableCell>
+                      <TableCell align="center">{customer.email}</TableCell>
+                      <TableCell align="center">{customer.accountType}</TableCell>
+                      <TableCell align="center">{customer.mobileNo}</TableCell>
+                      <TableCell align="center">{customer.city}</TableCell>
+                      <TableCell align="center">{customer.currentBalance}</TableCell>
+                      <TableCell align="center">{customer.lastTransaction}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
