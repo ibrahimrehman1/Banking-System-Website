@@ -41,17 +41,22 @@ export const MoneyTransferComponent: React.FC = () =>{
         return state.customer.customers
     })
 
-    const [customer, setCustomer] = useState<customersProps[]>([])
-
-    if (!customer.length && customers){
-        let custom = customers.filter((customer, index)=>index===Number(id))
-        setCustomer(custom)
-    }
-
     let receiver = useSelector((state: reducerStateProps)=>{
         return state.customer.receiver
       })
   
+
+    const [customer, setCustomer] = useState<customersProps[]>([])
+    const [receiverBalance, setBalance] = useState<number>(0);
+
+    if (!customer.length && customers){
+        let custom = customers.filter((customer, index)=>index===Number(id))
+        let receiverAmount = customers.filter((customer, index)=>customer.name === receiver)
+        setBalance(receiverAmount[0].currentBalance)
+        setCustomer(custom)
+    }
+
+    
 
     const classes = useStyles();
     const [values, setValues] = React.useState<State>({
@@ -81,6 +86,16 @@ export const MoneyTransferComponent: React.FC = () =>{
             })
             let data = await val.json();
             console.log(data);
+
+
+            let val2 = await fetch("http://localhost:5000/updatecustomers", {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({sender: customer[0].name, receiver, amount, date: String(new Date()), senderCurrentBalance: customer[0].currentBalance, receiverCurrentBalance: receiverBalance})
+            })
+            let data2 = await val2.json();
+            console.log(data2);
+
             history.push("/customers")
         }
     }
