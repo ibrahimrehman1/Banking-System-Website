@@ -34,6 +34,9 @@ a{
 
 .website-img{
     width: 300px;
+}
+
+.website-img > img{
     cursor: pointer;
 }
 
@@ -298,4 +301,8 @@ main{
 .tablebody-row:hover{
     background-color: rgb(207, 207, 207);
     cursor: pointer;
+}
+
+.MuiCardActions-root{
+    justify-content: center;
 }

@@ -1,15 +1,29 @@
 import {customersProps} from "../components/CustomersComponent";
 
-const initialCustomersState: Object = [];
+const initialCustomersState = {
+    customers: [],
+    sender: "",
+    receiver: ""
 
-interface actionProps{
+};
+
+interface customerActionProps{
     type: string,
-    payload: customersProps[]
+    payload: customersProps[] | string
 }
 
-export const customerReducer = (state = initialCustomersState, action: actionProps) =>{
+export const customerReducer = (state = initialCustomersState, action: customerActionProps) =>{
     switch(action.type){
+        case "UPDATECUSTOMER":
+            return {...state, customers: action.payload};
+
+        case "UPDATESENDER":
+            return {...state, sender: action.payload}
+
+        case "UPDATERECEIVER":
+            return {...state, receiver: action.payload}
+
         default:
-            return {payload: action.payload};
+            return state
     }
 }

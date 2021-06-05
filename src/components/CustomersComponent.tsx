@@ -10,6 +10,15 @@ import Paper from '@material-ui/core/Paper';
 import {useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 
+
+export interface reducerStateProps{
+  customer: {
+    customers: customersProps[],
+    sender: string,
+    receiver: string
+  }
+}
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -33,7 +42,7 @@ export interface customersProps{
 
 export interface stateProps{
   customer: {
-    payload: customersProps[]
+    customers: customersProps[]
   }
 }
 
@@ -49,20 +58,29 @@ const CustomersComponent: React.FC = () => {
         document.querySelector(".Home")?.classList.remove("active-link");
         document.querySelector(".View")?.classList.add("active-link");
         document.querySelector(".Contact")?.classList.remove("active-link");
+        
     }, [])
 
     let newCustomers = useSelector((state: stateProps)=>{
-      return state.customer.payload
+      return state.customer.customers;
     })
+
+    
 
     if (customers !== newCustomers){
       setCustomers(newCustomers);
     }
+
+
+    let receiver = useSelector((state: reducerStateProps)=>{
+      return state.customer.receiver
+    })
+
     return (
         <div style={{padding: "2em", marginTop: "150px"}}>
-          
+          {receiver ? <h1 style={{textAlign: "center"}}>Select a Sender</h1>: <h1 style={{textAlign: "center"}}>Select a Customer to Transfer Money</h1>}
         <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
+            <Table className={classes.table} aria-label="simple table" style={{marginTop: "50px"}}>
                 <TableHead>
                 <TableRow>
                     <TableCell align="center">Customer Name</TableCell>
@@ -75,19 +93,39 @@ const CustomersComponent: React.FC = () => {
                 </TableRow>
                 </TableHead>
                 <TableBody className={classes.tableBody}>
-                {customers.map((customer, index) => (
-                    <TableRow key={index} onClick={()=>history.push(`/customerdetail/${index}`)} className="tablebody-row">
-                      <TableCell component="th" scope="row" align="center">
-                          {customer.name}
-                      </TableCell>
-                      <TableCell align="center">{customer.email}</TableCell>
-                      <TableCell align="center">{customer.accountType}</TableCell>
-                      <TableCell align="center">{customer.mobileNo}</TableCell>
-                      <TableCell align="center">{customer.city}</TableCell>
-                      <TableCell align="center">{customer.currentBalance}</TableCell>
-                      <TableCell align="center">{customer.lastTransaction}</TableCell>
-                    </TableRow>
-                ))}
+                {customers && customers.map((customer, index) => {
+                  if (!receiver){
+                    return(
+                      <TableRow key={index} onClick={()=>history.push(`/customerdetail/${index}`)} className="tablebody-row">
+                        <TableCell component="th" scope="row" align="center">
+                            {customer.name}
+                        </TableCell>
+                        <TableCell align="center">{customer.email}</TableCell>
+                        <TableCell align="center">{customer.accountType}</TableCell>
+                        <TableCell align="center">{customer.mobileNo}</TableCell>
+                        <TableCell align="center">{customer.city}</TableCell>
+                        <TableCell align="center">{customer.currentBalance}</TableCell>
+                        <TableCell align="center">{customer.lastTransaction}</TableCell>
+                      </TableRow>
+                  )}
+                  else if (customer.name !== receiver){
+                    
+                    return(
+                      <TableRow key={index} onClick={()=>history.push(`/moneytransfer/${index}`)} className="tablebody-row">
+                        <TableCell component="th" scope="row" align="center">
+                            {customer.name}
+                        </TableCell>
+                        <TableCell align="center">{customer.email}</TableCell>
+                        <TableCell align="center">{customer.accountType}</TableCell>
+                        <TableCell align="center">{customer.mobileNo}</TableCell>
+                        <TableCell align="center">{customer.city}</TableCell>
+                        <TableCell align="center">{customer.currentBalance}</TableCell>
+                        <TableCell align="center">{customer.lastTransaction}</TableCell>
+                      </TableRow>
+                    )
+                  }
+                  })}
+                  
                 </TableBody>
             </Table>
         </TableContainer>

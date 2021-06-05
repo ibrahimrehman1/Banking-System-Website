@@ -1,6 +1,6 @@
 import React from "react";
 import WebsiteLogo from "./../assets/website-logo.png";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 interface NavProps{
     links: {
@@ -18,7 +18,6 @@ const Navbar:React.FC<NavProps> = ({links}) => {
             nav.style.boxShadow = "";
         }else{
             if (!nav.style.backgroundColor){
-                console.log(12)
                 nav.style.backgroundColor = "white";
                 nav.style.boxShadow = "1px 1px 5px 1px #cecece";
             }
@@ -26,12 +25,14 @@ const Navbar:React.FC<NavProps> = ({links}) => {
         
     })
 
+    const history = useHistory()
+
 
     
     return(
         <nav className="navbar">
             <div className="website-img">
-                <img src={WebsiteLogo} alt="Payonta" />
+                <img src={WebsiteLogo} alt="Payonta" onClick={()=>history.push("/")}/>
             </div>
             <div>
                 <ul className="nav-list">
