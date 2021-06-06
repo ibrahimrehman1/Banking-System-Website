@@ -73,11 +73,11 @@ function HomeComponent(){
                         </div>
                     </section>
                 </article>
-                <article className="main-header" style={{marginTop: "100px"}}>
-                    <div className="header-img">
+                <article className="main-header" style={{marginTop: "200px"}}>
+                    <div className="div-img">
                         <img src={HeaderImage2} alt="A Female Accountant" />
                     </div>
-                    <div className="header-div">
+                    <div className="header-div" style={{marginLeft: "40px"}}>
                         <h2>Our manager will contact you to clear the details.</h2>
                         <p>We are here to help you when you need your financial support, then we are help you.</p>
                         <p>We are here to help you when you need your financial support, then we are help you.</p>
