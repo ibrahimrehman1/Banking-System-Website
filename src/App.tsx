@@ -8,11 +8,14 @@ import {useDispatch} from "react-redux";
 import {CustomerDetailComponent} from "./components/CustomerDetailComponent";
 import {MoneyTransferComponent} from "./components/MoneyTransferComponent";
 
+
+
+
+
 function App() {
   const links = [
     {link: "Home", path:"/"}, 
     {link: "View all Customers", path: "/customers"}, 
-    {link: "Contact", path: "contact"}
   ]
 
   let dispatch = useDispatch();

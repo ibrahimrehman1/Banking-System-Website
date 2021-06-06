@@ -61,7 +61,7 @@ export const CustomerDetailComponent:React.FC = () =>{
 
 
     return(
-        <div style={{marginTop: "100px", padding: "2em"}}>
+        <div style={{marginTop: "200px", padding: "2em"}}>
             {customer.length && <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>

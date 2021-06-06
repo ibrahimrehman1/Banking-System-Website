@@ -46,11 +46,24 @@ a{
 
 .nav-list{
     list-style-type: none;
-    width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 650px){
+    .website-img{
+        width: 200px !important;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .article-3 > div{
+        width: 350px !important;
+    }
+}
+
 
 .active-link{
     color: #8180e0 !important;
@@ -215,10 +228,16 @@ main{
     .copyright-section{
         text-align: center;
     }
+
+    .article-3 > section > div{
+        height: 250px !important;
+    }
 }
 
 
-
+.MuiOutlinedInput-root legend{
+    float: none !important;
+}
 
 .article-1{
     margin-top: 250px;

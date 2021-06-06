@@ -102,7 +102,7 @@ export const MoneyTransferComponent: React.FC = () =>{
 
 
     return(
-        <div style={{marginTop: "150px", padding: "2em"}}>
+        <div style={{marginTop: "200px", padding: "2em"}}>
             <h1 style={{textAlign: "center"}}>Sender: {customer.length ? customer[0].name : ""}</h1>
             <h4 style={{textAlign: "center", opacity: ".8"}}>Current Balance: {customer.length ? customer[0].currentBalance : ""}</h4>
             <FormControl fullWidth className={classes.margin} variant="outlined">
