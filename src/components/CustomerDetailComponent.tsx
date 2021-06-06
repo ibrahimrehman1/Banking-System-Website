@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {customersProps, stateProps} from "./CustomersComponent";
 import { makeStyles } from '@material-ui/core/styles';
 import {useParams, useHistory} from "react-router-dom";
@@ -38,12 +38,19 @@ export const CustomerDetailComponent:React.FC = () =>{
         return state.customer.customers
     })
 
-    const [customer, setCustomer] = useState<customersProps[]>([])
+    
+    // const [customer, setCustomer] = useState<customersProps[]>([])
+    let customer: customersProps[] = [];
 
     if (!customer.length && customers){
         let custom = customers.filter((customer, index)=>index===Number(id))
-        setCustomer(custom)
+        customer = custom;
     }
+
+    useEffect(()=>{
+      document.title = `${customer[0].name} Details`
+    }, [])
+
 
     const classes = useStyles();
     const history = useHistory();

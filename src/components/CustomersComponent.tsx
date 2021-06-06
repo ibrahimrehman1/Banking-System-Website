@@ -78,7 +78,7 @@ const CustomersComponent: React.FC = () => {
 
     return (
         <div style={{padding: "2em", marginTop: "150px"}}>
-          {receiver ? <h1 style={{textAlign: "center"}}>Select a Sender</h1>: <h1 style={{textAlign: "center"}}>Select a Customer to Transfer Money</h1>}
+          {receiver ? <h2 style={{textAlign: "center"}}>Select a Sender</h2>: <h2 style={{textAlign: "center"}}>Select a Customer to Transfer Money</h2>}
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table" style={{marginTop: "50px"}}>
                 <TableHead>

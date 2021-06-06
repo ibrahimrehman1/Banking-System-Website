@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useParams, useHistory} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {customersProps, stateProps} from "./CustomersComponent";
@@ -56,6 +56,10 @@ export const MoneyTransferComponent: React.FC = () =>{
         setCustomer(custom)
     }
 
+    useEffect(()=>{
+        document.title = `Transfer Money`
+      }, [])
+  
     
 
     const classes = useStyles();
