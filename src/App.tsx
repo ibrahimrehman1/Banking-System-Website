@@ -21,7 +21,7 @@ function App() {
   let dispatch = useDispatch();
   useEffect(()=>{
     async function fetchCustomers(){
-      let val = await fetch("http://localhost:5000/customers");
+      let val = await fetch("https://basic-banking-website1.herokuapp.com/customers");
       let data = await val.json();
       dispatch(UpdateCustomer(data.customers))
     }

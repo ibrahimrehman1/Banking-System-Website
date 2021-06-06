@@ -83,7 +83,7 @@ export const MoneyTransferComponent: React.FC = () =>{
         }else{
             dispatch(UpdateCustomerData([customer[0].name, receiver, amount]))
             
-            let val = await fetch("http://localhost:5000/transfers", {
+            let val = await fetch("https://basic-banking-website1.herokuapp.com/transfers", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({sender: customer[0].name, receiver, amount, date: String(new Date())})
@@ -92,7 +92,7 @@ export const MoneyTransferComponent: React.FC = () =>{
             console.log(data);
 
 
-            let val2 = await fetch("http://localhost:5000/updatecustomers", {
+            let val2 = await fetch("https://basic-banking-website1.herokuapp.com/updatecustomers", {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({sender: customer[0].name, receiver, amount, date: String(new Date()), senderCurrentBalance: customer[0].currentBalance, receiverCurrentBalance: receiverBalance})
