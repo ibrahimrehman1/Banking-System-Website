@@ -114,8 +114,8 @@ main{
 
 }
 
-.header-div > button:hover{
-    background-color: black;
+.header-div > button:hover, .footer > section:nth-child(3) > button:hover{
+    background-color: black !important;
 }
 
 .header-img > img{
@@ -305,4 +305,75 @@ main{
 
 .MuiCardActions-root{
     justify-content: center;
+}
+
+
+.footer{
+    padding: 2em;
+    margin-top: 100px;
+    background-color: #e5e4ff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.footer > section{
+    margin-top: 50px;
+}
+
+.footer > section:first-child > h6{
+    color: #8180e0;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    margin-top: 30px;
+}
+
+.footer > section:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.footer > section:nth-child(2) > h6{
+    font-size: 1.3em;
+}
+
+.footer > section:nth-child(2) > p{
+    font-size: 1.2em;
+    margin-top: 10px;
+    opacity: .8;
+}
+
+.footer > section:nth-child(2) > span{
+    margin-top: 10px;
+    opacity: .7;
+}
+
+.footer > section:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+}
+
+.footer > section:nth-child(3) > div, .footer > section:nth-child(3) button{
+    margin-top: 25px;
+    transition: background-color .2s ease-in;
+
+}
+
+.footer > section:nth-child(3) > h2{
+    font-size: 2.5rem;
+}
+
+.copyright-section{
+    padding: 1em;
+    background-color: white;
+}
+
+.copyright-section > h4{
+    font-size: 1.2rem;
+    opacity: .6;
+    margin-left: 30px;
 }
